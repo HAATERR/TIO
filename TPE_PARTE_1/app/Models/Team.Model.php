@@ -14,7 +14,7 @@ class TeamModel{
         $db = $this->getDB();
     
         // 2. ejecuto la sentencia (2 subpasos)
-        $query = $db->prepare('SELECT * FROM team');
+        $query = $db->prepare("SELECT * FROM team");
         $query->execute();
     
         // 3. obtengo los resultados

@@ -13,8 +13,8 @@
                                     <p class='card-text'>Posicion: {{$player->Position}}</p>
                                     <p class='card-text'>Equipo: {{$player->Team}}</p>
                                     <p class='card-text'>Numero: {{$player->Number}}</p>
-                                    <a href='form_admi.tpl' class='btn btn-primary'type='button'>Editar o Agregar</a>
-                                    <a  href='delete/{{$player->id}}'  type="button" class="btn btn-danger">Eliminar</a>
+                                    <a href='form_admi' class='btn btn-primary'type='button'>Editar o Agregar</a>
+                                    <a  href='deletePlayer/{{$player->Player_id}}'  type="button" class="btn btn-danger">Eliminar</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,8 +36,8 @@
                                      <h5 class='card-title'>Equipo: {{$team->Team}}</h5>
                                     <p class='card-text'>Anillos: {{$team->Rings}}</p>
                                     <p class='card-text'>Ciudad: {{$team->City}}</p>
-                                    <a href='/templates/form_admi.tpl' class='btn btn-primary'type='button'>Editar o Agregar</a>
-                                    <a href='delete/{{$team->id}}' type="button" class="btn btn-danger">Eliminar</a>
+                                    <a href='form_admi' class='btn btn-primary'type='button'>Editar o Agregar</a>
+                                    <a href='deleteTeam/{$team->Team_id_fk}' type="button" class="btn btn-danger">Eliminar</a>
                                     </div>
                                 </div>
                             </div>

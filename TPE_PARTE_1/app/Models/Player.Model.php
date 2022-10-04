@@ -26,14 +26,14 @@ class PlayerModel{
     function insertPlayer($number, $position, $player_name,$team) {
     $db = $this->getDB();
     $query = $db->prepare("INSERT INTO players ( Number, Position, Player_Name,Team) VALUES (?, ?, ?,?)");
-    $query->execute([$number, $position, $player_name,$team, false]);
+    $query->execute([$number, $position, $player_name,$team]);
 
     return $db->lastInsertId();
 }
 
     function deletePlayerById($id) {
     $db = $this->getDB();
-    $query = $db->prepare('DELETE FROM players WHERE Player_id = ?');
+    $query = $db->prepare("DELETE FROM players WHERE Player_id = ?");
     $query->execute([$id]);
 }
 

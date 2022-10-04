@@ -4,17 +4,17 @@
 
 <h2>Jugadores</h2>
 
-<form class="row g-3 mt-5 mb-5" method="POST">
+<form class="row g-3 mt-5 mb-5" action="addPlayer" method="POST">
   <div class="col-md-4">
-    <label for="validationServer01" class="form-label">Nombre de Jugador</label>
+    <label for="validationServer01" class="form-label">Numero de Camiseta</label>
     <input type="text" class="form-control is-valid" id="validationServer01" name="player_name" required>
   </div>
   <div class="col-md-4">
-    <label for="validationServer02" class="form-label">Numero De la Camiseta</label>
+    <label for="validationServer02" class="form-label">Posicion</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="number" required>
   </div>
   <div class="col-md-4">
-    <label for="validationServer02" class="form-label">Posicion</label>
+    <label for="validationServer02" class="form-label">Nombre de Jugador</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="position" required>
 
     <div class="col-md-3">
@@ -44,7 +44,7 @@
 <!--Form Admi Equipos-->
 <h2>Equipos</h2>
 
-<form class="row g-3 mt-5 mb-5" method="POST" >
+<form class="row g-3 mt-5 mb-5" action="addTeam" method="POST" >
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">Nombre de Equipo</label>
     <input type="text" class="form-control is-valid" id="validationServer01" name="team" required>
