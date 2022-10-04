@@ -94,6 +94,10 @@ class PlayerController{
     }
 
 
-
+    function showForm_Admi(){
+        $teams = $this->ModelTeam->getAllTeams();
+        $players = $this->ModelPlayers->getAllPlayers();
+        $this->NbaViews->showForm_Admi($teams,$players);
+    }
 
 }

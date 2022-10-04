@@ -35,8 +35,23 @@
             echo"<h3> $msg </h3>";
         }
 
+        function showForm_Admi($teams,$players){
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('form_admi.tpl');
+            
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->display('form_admi.tpl');
 
+        }
     
+    
+        
+        
+        
+        
+        
+        
+        
         //function showRegister(){
             
            
@@ -48,11 +63,7 @@
     }
     
 
-        //function showForm_Admi(){
-            
-
-        //}
-    
+        
     
     
     
