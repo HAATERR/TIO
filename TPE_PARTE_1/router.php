@@ -3,7 +3,7 @@
 require_once 'app/Controllers/Player.controllers.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'form_admi'; // acción por defecto
+$action = 'Home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -67,11 +67,6 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->showForm_Admi();
         break;
-
-
-
-
-    
     default:
         header("HTTP/1.0 404 Not Found");
         echo('404 Page not found');
