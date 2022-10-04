@@ -3,7 +3,7 @@
 require_once 'app/Controllers/Player.controllers.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action = 'Home'; // acción por defecto
+$action = 'form_admi'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }

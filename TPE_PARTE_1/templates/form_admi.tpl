@@ -8,23 +8,14 @@
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">Nombre de Jugador</label>
     <input type="text" class="form-control is-valid" id="validationServer01" name="player_name" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Numero De la Camiseta</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="number" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Posicion</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="position" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
 
     <div class="col-md-3">
       <label for="validationCustom04" class="form-label">Equipo</label>
@@ -57,23 +48,14 @@
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">Nombre de Equipo</label>
     <input type="text" class="form-control is-valid" id="validationServer01" name="team" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Cantidad de Anillos</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="rings" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Ciudad del Equipo</label>
     <input type="text" class="form-control is-valid" id="validationServer02" name="city" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
     <div class="col-md-3">
       <label for="validationCustom04" class="form-label">Jugador</label>
       <select class="form-select" id="validationCustom04" name="player" required>
