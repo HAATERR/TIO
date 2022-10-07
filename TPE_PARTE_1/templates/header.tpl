@@ -43,7 +43,7 @@
           {foreach from=$players item=$player }
             
         
-            <li><a class="dropdown-item" href="Players/{{$player->Player_id}}">{{$player->Player_Name}}</a></li>
+            <li><a class="dropdown-item" href="Player/{{$player->Player_id}}">{{$player->Player_Name}}</a></li>
 
           {/foreach}
           </ul>
@@ -61,7 +61,7 @@
             {foreach from=$teams item=$team }
               
           
-              <li><a class="dropdown-item" href="Teams/{{$team->Team_id_fk}}">{{$team->Team}}</a></li>
+              <li><a class="dropdown-item" href="Team/{{$team->Team_id_fk}}">{{$team->Team}}</a></li>
 
             {/foreach}
             </ul>
@@ -69,15 +69,21 @@
           <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="form_admi"><b>Parte Admi</b></a>
           </li>
+          {{if !isset($smarty.session.USER_ID)}}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="register"><b>Regitrarse Admi</b></a>
+            <a class="nav-link active" aria-current="page" href="login"><b>Iniciar Sesion</b></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><b>Iniciar Sesion Admi</b></a>
+          {{else}}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="logout"><b>Cerrar Sesion ({$smarty.session.USER_EMAIL})</b></a>
           </li>
+          {{/if}}
         </ul>
       </div>
     </div>
   </div>
 </nav>
+ 
+
 </header>
+  <main>

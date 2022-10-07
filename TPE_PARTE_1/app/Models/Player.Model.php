@@ -23,6 +23,12 @@ class PlayerModel{
 
 
 }
+   function playerId($id){
+      $db = $this->getDB();
+      $query = $db->prepare("SELECT * FROM players WHERE Player_id = ?");
+      $query->execute([$id]);
+   }    
+
     function insertPlayer($number, $position, $player_name,$team) {
     $db = $this->getDB();
     $query = $db->prepare("INSERT INTO players ( Number, Position, Player_Name,Team) VALUES (?, ?, ?,?)");

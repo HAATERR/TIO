@@ -1,5 +1,5 @@
 <?php
-
+require_once 'app/Controllers/User.controllers.php';
 require_once 'app/Controllers/Player.controllers.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -39,12 +39,19 @@ switch ($params[0]) {
         break;
     case 'updatePlayer':
         $id = $params[1];
-        //updatePlayer($id);
+        $controller = new PlayerController();
+        $controller->updatePlayer($id);
         break;
-    case 'Teams':
-       $controller = new PlayerController();
-        $controller->showTeams();
-        break;
+    //case 'Player':
+      //  $id = $params[1];    
+        //$controller = new PlayerController();
+        //$controller->showPlayersById($id);
+        //break;
+    //case 'Team':
+       // $id = $params[1];
+        //$controller = new PlayerController();
+        //$controller->showTeamById($id);
+        //break;
     case 'addTeam';
     $controller = new PlayerController();
      $controller->addTeam();
@@ -57,11 +64,21 @@ switch ($params[0]) {
         break;
     case 'updateTeam':
         $id = $params[1];
-        //updateTeam($id);
+        $controller = new PlayerController();
+        $controller->updateTeam($id);
         break;   
-   // case 'register';
-    //$controller = new UserController();    
-    //$controller->showRegister();
+    case 'login';
+        $controller = new UserController();    
+        $controller->showLogin();
+        break;
+    case 'verify';
+        $controller = new UserController();    
+        $controller->verifyUser();
+        break;
+    case 'logout':
+            $authController = new UserController();
+            $authController->logout();
+            break;
     case 'form_admi';
         $controller = new PlayerController();
         $controller->showForm_Admi();

@@ -37,7 +37,16 @@ class TeamModel{
         $query = $db->prepare('DELETE FROM team WHERE Team_id_fk = ?');
         $query->execute([$id]);
     }
+    function teamId($id){
+        $db = $this->getDB();
+        $query = $db->prepare('SELECT * FROM team WHERE Team_id_fk = ?');
+        $query->execute([$id]);
+    }
+    function updateTeamById($team,$id){
+        $query = $this->db->prepare('UPDATE `team` SET `team` = ? WHERE `team`.`Team_id_fk` = ?');
+        $query->execute([$team,$id]);
 
-    
+
+    }
 
 }

@@ -19,28 +19,33 @@ class PlayerController{
      }
 
 
+
+
+
     function showHome() {
         
         $players = $this->ModelPlayers->getAllPlayers();
         $teams  = $this->ModelTeam->getAllTeams();
         //obtengo la vista
-        
-        $this->NbaViews->showHome($players,$teams);
+         $this->NbaViews->showHome($players,$teams);
         
     }
     
-    
     function showPlayers(){
         $teams =  $this->ModelTeam->getAllTeams();
-        
         $players = $this->ModelPlayers->getAllPlayers();
         $this->NbaViews->showPlayers($players,$teams);
-  }
+    }
+    //function showPlayersById($id){
+      //  $teams =  $this->ModelTeam->getAllTeams();
+        //$players = $this->ModelPlayers->playerId($id);
+        //$this->NbaViews->showPlayersById($players,$teams,$id);
+  //}
 
 
     function addPlayer() {
         // TODO: validar entrada de datos
-    
+        $this->checkLoggedIn();
         $player_name = $_POST['player_name'];
         $number = $_POST['number'];
         $position = $_POST['position'];
@@ -59,21 +64,38 @@ class PlayerController{
     }
 
     function deletePlayer($id) {
-       $this->ModelPlayers->deletePlayerById($id);
+        $this->checkLoggedIn();
+        $this->ModelPlayers->deletePlayerById($id);
         header("Location: " . BASE_URL); 
     }
 
+    
+    //function showTeamById($id){
+      //  $players = $this->ModelPlayers->getAllPlayers();
+        //$teams  = $this->ModelTeam->teamId($id);
+        //$this->NbaViews->showTeamById($teams,$players,$id);
+    //}
+  
+
+    function updatePlayer($id){
+        $this->checkLoggedIn();
+        if (isset($_POST['player'])){
+            $this->model->updatePlayer($_POST['player'],$id);
+
+        }
+    }
+
     function showTeams(){
+        $teams =  $this->ModelTeam->getAllTeams();
         $players = $this->ModelPlayers->getAllPlayers();
-        $teams  = $this->ModelTeam->getAllTeams();
-        $this->NbaViews->showTeams($teams,$players);
-  }
+        $this->NbaViews->showTeams($players,$teams);
+    }
 
 
 
     function addTeam() {
         // TODO: validar entrada de datos
-    
+        $this->checkLoggedIn();
         $team = $_POST['team'];
         $rings = $_POST['rings'];
         $city = $_POST['city'];
@@ -92,15 +114,33 @@ class PlayerController{
 
 
     function deleteTeam($id) {
-       $this->ModelTeam->deleteTeamById($id);
+        $this->checkLoggedIn();
+        $this->ModelTeam->deleteTeamById($id);
         header("Location: " . BASE_URL); 
     }
 
+    
+    
+    
+    function updateTeam($id){
+        $this->checkLoggedIn();
+        if (isset($_POST['team'])){
+            $this->model->updateTeam($_POST['team'],$id);
 
+        }
+    }
     function showForm_Admi(){
+        $this->checkLoggedIn();
         $teams = $this->ModelTeam->getAllTeams();
         $players = $this->ModelPlayers->getAllPlayers();
         $this->NbaViews->showForm_Admi($teams,$players);
     }
 
+    function checkLoggedIn() {
+        session_start();
+        if (!isset($_SESSION['IS_LOGGED'])) {
+            header("Location: " . BASE_URL . 'login');
+            die();
+        }
+    }
 }
