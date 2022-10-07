@@ -27,7 +27,7 @@ class TeamModel{
     function insertTeam($team, $rings, $city) {
         $db = $this->getDB();
         $query = $db->prepare("INSERT INTO team ( Team, Rings, City) VALUES (?, ?, ?)");
-        $query->execute([$team, $rings, $city, false]);
+        $query->execute([$team, $rings, $city]);
 
         return $db->lastInsertId();
 }

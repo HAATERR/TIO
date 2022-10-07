@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><b>Nba info</b></a>
+    <a class="navbar-brand" href="Home"><b>Nba info</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,16 +28,49 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <h3><a class="nav-link active" aria-current="page" href="#"><b>Home</b></a></h3>
+            <h3><a class="nav-link active" aria-current="page" href="Home"><b>Home</b></a></h3>
+          </li>
+          
+          
+          <li class="nav-item">
+          <a class="nav-link active" href="Players"><b>Jugadores NBA</b></a>
+          </li>
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Jugador
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+          {foreach from=$players item=$player }
+            
+        
+            <li><a class="dropdown-item" href="Players/{{$player->Player_id}}">{{$player->Player_Name}}</a></li>
+
+          {/foreach}
+          </ul>
+        </li>
+          
+          
+        <li class="nav-item">
+        <a class="nav-link active" href="Teams"><b>Equipos NBA</b></a>
+        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Equipo
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+            {foreach from=$teams item=$team }
+              
+          
+              <li><a class="dropdown-item" href="Teams/{{$team->Team_id_fk}}">{{$team->Team}}</a></li>
+
+            {/foreach}
+            </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#"><b>Jugadores NBA</b></a>
+          <a class="nav-link active" aria-current="page" href="form_admi"><b>Parte Admi</b></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#"><b>Equipos NBA</b></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="register.tpl"><b>Regitrarse Admi</b></a>
+            <a class="nav-link active" aria-current="page" href="register"><b>Regitrarse Admi</b></a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"><b>Iniciar Sesion Admi</b></a>

@@ -15,18 +15,11 @@
 
 
 
-    function showPlayers($players){
+    function showHome($players,$teams){
         
         $this->smarty->assign('players',$players);
-        $this->smarty->display('home.tpl');
-      }
-
-    function showTeams($teams){
-        
         $this->smarty->assign('teams',$teams);
-        $this->smarty->display('home.tpl');
-        
-            
+        $this->smarty->display('home.tpl');            
         }
 
         function showFallo($msg){
@@ -35,10 +28,26 @@
             echo"<h3> $msg </h3>";
         }
 
+        function showTeams($teams,$players){
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('team_seccion.tpl');
+            
+        }
+         
+
+        function showPlayers($players,$teams){
+            $this->smarty->assign('players',$players);
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->display('player_seccion.tpl');
+            
+        }
+        
+        
+        
+        
         function showForm_Admi($teams,$players){
             $this->smarty->assign('players',$players);
-            $this->smarty->display('form_admi.tpl');
-            
             $this->smarty->assign('teams',$teams);
             $this->smarty->display('form_admi.tpl');
 

@@ -19,17 +19,25 @@ class PlayerController{
      }
 
 
-    function showPlayers() {
+    function showHome() {
         
         $players = $this->ModelPlayers->getAllPlayers();
-        
+        $teams  = $this->ModelTeam->getAllTeams();
         //obtengo la vista
         
-        $this->NbaViews->showPlayers($players);
+        $this->NbaViews->showHome($players,$teams);
         
     }
     
     
+    function showPlayers(){
+        $teams =  $this->ModelTeam->getAllTeams();
+        
+        $players = $this->ModelPlayers->getAllPlayers();
+        $this->NbaViews->showPlayers($players,$teams);
+  }
+
+
     function addPlayer() {
         // TODO: validar entrada de datos
     
@@ -55,17 +63,12 @@ class PlayerController{
         header("Location: " . BASE_URL); 
     }
 
+    function showTeams(){
+        $players = $this->ModelPlayers->getAllPlayers();
+        $teams  = $this->ModelTeam->getAllTeams();
+        $this->NbaViews->showTeams($teams,$players);
+  }
 
-
-
-    function showTeams() {
-        
-        $teams =  $this->ModelTeam->getAllTeams();
-        
-        //obtengo la vista
-
-        $this->NbaViews->showTeams($teams);
-    }
 
 
     function addTeam() {

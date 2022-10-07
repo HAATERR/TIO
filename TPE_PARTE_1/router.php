@@ -16,8 +16,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
     case 'Home':
         $controller = new PlayerController();
-        $controller->showPlayers();
-        $controller->showTeams();
+        $controller->showHome();
         break;
     case 'Players':
         $controller = new PlayerController();
