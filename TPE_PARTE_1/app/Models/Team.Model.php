@@ -41,10 +41,12 @@ class TeamModel{
         $db = $this->getDB();
         $query = $db->prepare('SELECT * FROM team WHERE Team_id_fk = ?');
         $query->execute([$id]);
+        $team = $query->fetchAll(PDO::FETCH_OBJ);
+        return $team;
     }
-    function updateTeamById($team,$id){
-        $query = $this->db->prepare('UPDATE `team` SET `team` = ? WHERE `team`.`Team_id_fk` = ?');
-        $query->execute([$team,$id]);
+    function updateTeam($team,$id,$rings,$city){
+        $query = $this->db->prepare('UPDATE `team` SET `Team` = ?, `Rings` = ?,`City` = ?, WHERE `team`.`Team_id_fk` = ?');
+        $query->execute([$team,$rings,$city,$id]);
 
 
     }

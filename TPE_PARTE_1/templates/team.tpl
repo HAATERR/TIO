@@ -1,9 +1,10 @@
 {include file="header.tpl"}
-        <div class="container text-center">
-                    {{foreach from=$teams item=$team}}
+
+
                         <div class="row " >
-                                <div class="col mt-5 mb-5">
-                                    <div class="card" >
+                                <div class="col-sm-6 mt-5 mb-5">
+                                
+                                            <div class="card" >
                                             <div class="card-body">
                                                 <h5 class='card-title'>Equipo: {{$team->Team}}</h5>
                                                 <p class='card-text'>Anillos: {{$team->Rings}}</p>
@@ -14,6 +15,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    {{/foreach}}
-                        </div>
+                                    
+
 {include file="footer.tpl"}

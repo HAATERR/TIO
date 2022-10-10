@@ -3,6 +3,7 @@ require_once 'app/Controllers/User.controllers.php';
 require_once 'app/Controllers/Player.controllers.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
+
 $action = 'Home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -42,16 +43,16 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->updatePlayer($id);
         break;
-    //case 'Player':
-      //  $id = $params[1];    
-        //$controller = new PlayerController();
-        //$controller->showPlayersById($id);
-        //break;
-    //case 'Team':
-       // $id = $params[1];
-        //$controller = new PlayerController();
-        //$controller->showTeamById($id);
-        //break;
+    case 'Player':
+        $id = $params[1];    
+        $controller = new PlayerController();
+        $controller->showPlayerById($id);
+        break;
+    case 'Team':
+        $id = $params[1];
+        $controller = new PlayerController();
+        $controller->showTeamById($id);
+        break;
     case 'addTeam';
     $controller = new PlayerController();
      $controller->addTeam();
@@ -65,7 +66,7 @@ switch ($params[0]) {
     case 'updateTeam':
         $id = $params[1];
         $controller = new PlayerController();
-        $controller->updateTeam($id);
+        $controller->showUpdateTeam($team,$id,$rings,$city);
         break;   
     case 'login';
         $controller = new UserController();    

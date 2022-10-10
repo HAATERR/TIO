@@ -17,8 +17,7 @@
         }
          
         public function showLogin(){
-           
-            $this->NbaViews->showLogin();
+           $this->NbaViews->showLogin();
 
         }
     
@@ -30,7 +29,7 @@
             $user = $this->ModelUser->getAllUsersByEmail($email);
 
                 //verifico los datos
-            if($user && password_verify($password,$user->password)){
+            if($user && password_verify($password, $user->password)){
                 //seccion iniciada
                 session_start();
                 $_SESSION['USER_ID'] = $user->User_id;
@@ -38,6 +37,7 @@
                 $_SESSION['IS_LOGGED'] = true;
                 
                 header("Location: " . BASE_URL);
+               
             }else{
 
                 $this->NbaViews->showLogin("El usuario o la contraseña son incorrectos");

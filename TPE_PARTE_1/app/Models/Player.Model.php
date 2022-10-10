@@ -23,11 +23,13 @@ class PlayerModel{
 
 
 }
-   function playerId($id){
-      $db = $this->getDB();
-      $query = $db->prepare("SELECT * FROM players WHERE Player_id = ?");
-      $query->execute([$id]);
-   }    
+    function playerId($id){
+        $db = $this->getDB();
+        $query = $db->prepare('SELECT * FROM players WHERE Player_id = ?');
+        $query->execute([$id]);
+        $player = $query->fetchAll(PDO::FETCH_OBJ);
+        return $player;
+}
 
     function insertPlayer($number, $position, $player_name,$team) {
     $db = $this->getDB();

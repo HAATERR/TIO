@@ -66,18 +66,21 @@
             {/foreach}
             </ul>
           </li>
+          {if isset($smarty.session.USER_ID)}
           <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="form_admi"><b>Parte Admi</b></a>
           </li>
-          {{if !isset($smarty.session.USER_ID)}}
-          <li class="nav-item">
+          {/if}
+          {if !isset($smarty.session.USER_ID)}
+            <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="login"><b>Iniciar Sesion</b></a>
-          </li>
-          {{else}}
+            </li>
+          
+          {else}
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="logout"><b>Cerrar Sesion ({$smarty.session.USER_EMAIL})</b></a>
-          </li>
-          {{/if}}
+            </li>
+          {/if}
         </ul>
       </div>
     </div>

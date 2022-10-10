@@ -23,24 +23,30 @@ class PlayerController{
 
 
     function showHome() {
-        
+        session_start();
         $players = $this->ModelPlayers->getAllPlayers();
         $teams  = $this->ModelTeam->getAllTeams();
         //obtengo la vista
-         $this->NbaViews->showHome($players,$teams);
+         $this->NbaViews->showHome($players,$teams,"Tiene que eliminar el equipo primero para eliminar el jugador");
         
     }
     
+
+    //JUGADORES
     function showPlayers(){
+        session_start();
         $teams =  $this->ModelTeam->getAllTeams();
         $players = $this->ModelPlayers->getAllPlayers();
         $this->NbaViews->showPlayers($players,$teams);
     }
-    //function showPlayersById($id){
-      //  $teams =  $this->ModelTeam->getAllTeams();
-        //$players = $this->ModelPlayers->playerId($id);
-        //$this->NbaViews->showPlayersById($players,$teams,$id);
-  //}
+    function showPlayerById($id){
+        session_start();
+
+        $players = $this->ModelPlayers->getAllPlayers();
+        $teams = $this->ModelTeam->getAllTeams();
+        $player = $this->ModelPlayers->playerId($id);
+        $this->NbaViews->showPlayerById($players,$player,$teams);
+    }
 
 
     function addPlayer() {
@@ -64,19 +70,23 @@ class PlayerController{
     }
 
     function deletePlayer($id) {
+        
+
+        
         $this->checkLoggedIn();
         $this->ModelPlayers->deletePlayerById($id);
         header("Location: " . BASE_URL); 
+     
     }
 
-    
-    //function showTeamById($id){
-      //  $players = $this->ModelPlayers->getAllPlayers();
-        //$teams  = $this->ModelTeam->teamId($id);
-        //$this->NbaViews->showTeamById($teams,$players,$id);
+    //function showUpdatePlayer($id){
+       // $this->checkLoggedIn();
+        //$teams =  $this->ModelTeam->getAllTeams();
+        //$players = $this->ModelPlayers->playerId($id);
+        //$this->ModelPlayers->updatePlayer($team,$id,$rings,$city);
+        
+       // $this->NbaViews->showUpdateTeam($teams,$players);
     //}
-  
-
     function updatePlayer($id){
         $this->checkLoggedIn();
         if (isset($_POST['player'])){
@@ -84,11 +94,25 @@ class PlayerController{
 
         }
     }
+    
+    //EQUIPOS
+    
+    function showTeamById($id){
+        session_start();
+        $players = $this->ModelPlayers->getAllPlayers();
+        $teams = $this->ModelTeam->getAllTeams();
+        $team  = $this->ModelTeam->teamId($id);
+        $this->NbaViews->showTeamById($players,$team,$teams);
+    }
+  
+
+    
 
     function showTeams(){
+        session_start();
         $teams =  $this->ModelTeam->getAllTeams();
         $players = $this->ModelPlayers->getAllPlayers();
-        $this->NbaViews->showTeams($players,$teams);
+        $this->NbaViews->showTeams($teams,$players);
     }
 
 
@@ -122,12 +146,16 @@ class PlayerController{
     
     
     
-    function updateTeam($id){
+    function showUpdateTeam($id){
         $this->checkLoggedIn();
+        $teams =  $this->ModelTeam->getAllTeams();
+        $players = $this->ModelPlayers->getAllPlayers();
+        $this->ModelTeam->updateTeam($team,$id,$rings,$city);
         if (isset($_POST['team'])){
-            $this->model->updateTeam($_POST['team'],$id);
-
+           $this->ModelTeam->updateTeam($team,$city,$rings,$id);
+           
         }
+        $this->NbaViews->showUpdateTeam($teams,$players);
     }
     function showForm_Admi(){
         $this->checkLoggedIn();

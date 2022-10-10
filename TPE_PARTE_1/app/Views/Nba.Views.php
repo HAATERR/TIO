@@ -15,9 +15,9 @@
 
 
 
-    function showHome($players,$teams){
-        
+    function showHome($players,$teams,$error = null){
         $this->smarty->assign('players',$players);
+        $this->smarty->assign('error',$error);
         $this->smarty->assign('teams',$teams);
         $this->smarty->display('home.tpl');            
         }
@@ -35,13 +35,13 @@
         }
         
         
-        //function showPlayersById($id,$players,$teams){
-            //$this->smarty->assign('players',$players);
-            //$this->smarty->assign('teams',$teams);
-           // $this->smarty->assign('id',$id);
-          //  $this->smarty->display('player_seccion_id.tpl');
+        function showPlayerById($players,$player,$teams){
+            $this->smarty->assign('player',$player[0]);
+            $this->smarty->assign('players',$players);
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->display('player.tpl');
             
-        //}
+        }
         
         
         
@@ -59,16 +59,20 @@
             $this->smarty->assign('teams',$teams);
             $this->smarty->display('team_seccion.tpl');
         }
+        function showUpdateTeam($teams,$players){
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('update.tpl');
+        }
         
-        
-        //function showTeamById($id,$teams,$players){
-          //  $this->smarty->assign('teams',$teams);
-            //$this->smarty->assign('players',$players);
-            //$this->smarty->assign('id',$id);
-            //$this->smarty->display('team_seccion_id.tpl');
+        function showTeamById($players,$team,$teams){
+            $this->smarty->assign('team',$team[0]);
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('team.tpl');
             
 
-     //}
+     }
 
 
 
