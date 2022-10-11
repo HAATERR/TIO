@@ -79,20 +79,23 @@ class PlayerController{
      
     }
 
-    //function showUpdatePlayer($id){
-       // $this->checkLoggedIn();
-        //$teams =  $this->ModelTeam->getAllTeams();
-        //$players = $this->ModelPlayers->playerId($id);
-        //$this->ModelPlayers->updatePlayer($team,$id,$rings,$city);
-        
-       // $this->NbaViews->showUpdateTeam($teams,$players);
-    //}
+    function showUpdatePlayer($id){
+        $this->checkLoggedIn();
+        $player =  $this->ModelPlayers->playerId($id);
+        $teams = $this->ModelTeam->getAllTeams(); 
+        $players = $this->ModelPlayers->getAllPlayers();
+        $this->NbaViews->showUpdatePlayer($player,$players,$teams,$id);
+    }
     function updatePlayer($id){
         $this->checkLoggedIn();
-        if (isset($_POST['player'])){
-            $this->model->updatePlayer($_POST['player'],$id);
-
+        if (($_POST['number']) && ($_POST['position']) && ($_POST['player_name']) && ($_POST['team'])){
+            $number = $_POST['number'];
+            $position = $_POST['position'];
+            $player_name = $_POST['player_name'];
+            $team = $_POST['team'];
+            $this->ModelPlayers->updatePlayer($number,$position,$player_name,$team,$id);
         }
+        header("Location: " . BASE_URL); 
     }
     
     //EQUIPOS
@@ -144,18 +147,22 @@ class PlayerController{
     }
 
     
-    
-    
+    function updateTeam($id){
+        $this->checkLoggedIn();
+       
+            $team = $_POST['team'];
+            $rings = $_POST['rings'];
+            $city = $_POST['city'];
+            $this->ModelTeam->updateTeam($team,$rings,$city,$id);
+        
+        header("Location: " . BASE_URL); 
+    }
     function showUpdateTeam($id){
         $this->checkLoggedIn();
-        $teams =  $this->ModelTeam->getAllTeams();
+        $team =  $this->ModelTeam->teamId($id);
+        $teams = $this->ModelTeam->getAllTeams(); 
         $players = $this->ModelPlayers->getAllPlayers();
-        $this->ModelTeam->updateTeam($team,$id,$rings,$city);
-        if (isset($_POST['team'])){
-           $this->ModelTeam->updateTeam($team,$city,$rings,$id);
-           
-        }
-        $this->NbaViews->showUpdateTeam($teams,$players);
+        $this->NbaViews->showUpdateTeam($team,$players,$teams,$id);
     }
     function showForm_Admi(){
         $this->checkLoggedIn();

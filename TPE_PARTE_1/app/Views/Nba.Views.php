@@ -28,6 +28,12 @@
             echo"<h3> $msg </h3>";
         }
          
+        function showUpdatePlayer($player,$players,$teams){
+            $this->smarty->assign('player',$player[0]);
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('updatePlayer.tpl');
+        }
         function showPlayers($players,$teams){
             $this->smarty->assign('players',$players);
             $this->smarty->assign('teams',$teams);
@@ -59,10 +65,11 @@
             $this->smarty->assign('teams',$teams);
             $this->smarty->display('team_seccion.tpl');
         }
-        function showUpdateTeam($teams,$players){
+        function showUpdateTeam($team,$players,$teams){
+            $this->smarty->assign('team',$team[0]);
             $this->smarty->assign('teams',$teams);
             $this->smarty->assign('players',$players);
-            $this->smarty->display('update.tpl');
+            $this->smarty->display('updateTeam.tpl');
         }
         
         function showTeamById($players,$team,$teams){

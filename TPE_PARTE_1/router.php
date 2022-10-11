@@ -38,6 +38,11 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->deletePlayer($id);
         break;
+     case 'showUpdatePlayer':
+            $id = $params[1];
+            $controller = new PlayerController();
+            $controller->showUpdatePlayer($id);
+            break;
     case 'updatePlayer':
         $id = $params[1];
         $controller = new PlayerController();
@@ -63,10 +68,15 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->deleteTeam($id);
         break;
+    case 'showUpdateTeam':
+        $id = $params[1];
+        $controller = new PlayerController();
+        $controller->showUpdateTeam($id);
+        break; 
     case 'updateTeam':
         $id = $params[1];
         $controller = new PlayerController();
-        $controller->showUpdateTeam($team,$id,$rings,$city);
+        $controller->updateTeam($id);
         break;   
     case 'login';
         $controller = new UserController();    

@@ -1,5 +1,7 @@
 
-
+body{
+    background-color: gray;
+}
 main{
     width: 50%;
     display: flex;

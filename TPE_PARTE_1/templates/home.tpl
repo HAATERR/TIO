@@ -15,7 +15,7 @@
                                     <p class='card-text'>Numero: {{$player->Number}}</p>
                                     {if isset($smarty.session.USER_ID)}
                                         <a href='form_admi' class='btn btn-primary'type='button'>Agregar</a>
-                                        <a href='updatePlayer' class='btn btn-primary'type='button'>Editar</a>
+                                        <a href='showUpdatePlayer/{{$player->Player_id}}' class='btn btn-primary'type='button'>Editar</a>
                                         <a  href='deletePlayer/{{$player->Player_id}}'  type="button" class="btn btn-danger">Eliminar</a>
                                             <div class="alert alert-danger mt-3">
                                                 {$error}
@@ -39,7 +39,7 @@
                                                     <p class='card-text'>Ciudad: {{$team->City}}</p> 
                                                 {if isset($smarty.session.USER_ID)}
                                                     <a href='form_admi' class='btn btn-primary'type='button'>Agregar</a>
-                                                    <a href='updateTeam' class='btn btn-primary'type='button'>Editar</a>
+                                                    <a href='showUpdateTeam/{$team->Team_id_fk}' class='btn btn-primary'type='button'>Editar</a>
                                                     <a href='deleteTeam/{$team->Team_id_fk}' type="button" class="btn btn-danger">Eliminar</a>
                                                 {/if} 
                                                     </div>

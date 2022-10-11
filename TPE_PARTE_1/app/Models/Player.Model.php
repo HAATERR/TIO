@@ -46,7 +46,13 @@ class PlayerModel{
 }
 
 
-   
+function updatePlayer($number,$position,$player_name,$team,$id){
+    $db = $this->getDB();
+    $query = $this->$db->prepare('UPDATE players SET Number = ?, Position = ?,Player_Name = ?,Team = ? WHERE players . Player_id = ?');
+    $query->execute([$number,$position,$player_name,$team,$id]); 
+
+
+}
 
 
     

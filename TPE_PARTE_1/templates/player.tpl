@@ -12,7 +12,7 @@
                          <p class='card-text'>Equipo: {$player->Team}</p>
                          <p class='card-text'>Numero: {$player->Number}</p>
                          <a href='form_admi' class='btn btn-primary'type='button'>Agregar</a>
-                         <a href='updatePlayer' class='btn btn-primary'type='button'>Editar</a>
+                         <a href='showUpdatePlayer/{{$player->Player_id}}' class='btn btn-primary'type='button'>Editar</a>
                          <a  href='deletePlayer/{{$player->Player_id}}'  type="button" class="btn btn-danger">Eliminar</a>
                          </div>
                      </div>
