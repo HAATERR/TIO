@@ -27,7 +27,7 @@ class PlayerController{
         $players = $this->ModelPlayers->getAllPlayers();
         $teams  = $this->ModelTeam->getAllTeams();
         //obtengo la vista
-         $this->NbaViews->showHome($players,$teams,"Tiene que eliminar el equipo primero para eliminar el jugador");
+         $this->NbaViews->showHome($players,$teams,"Tiene que eliminar los jugadores primero para eliminar el equipo");
         
     }
     
@@ -62,7 +62,7 @@ class PlayerController{
             $this->NbaViews->showFallo('Faltan datos obligatorios');
          };
 
-        $id = $this->ModelPlayers->insertPlayer($player_name, $number, $position,$team);
+        $id = $this->ModelPlayers->insertPlayer($number,$position,$player_name,$team);
 
        
     

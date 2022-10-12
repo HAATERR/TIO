@@ -34,19 +34,19 @@ class TeamModel{
 
     function deleteTeamById($id) {
         $db = $this->getDB();
-        $query = $db->prepare('DELETE FROM team WHERE Team_id_fk = ?');
+        $query = $db->prepare('DELETE FROM team WHERE Team_id = ?');
         $query->execute([$id]);
     }
     function teamId($id){
         $db = $this->getDB();
-        $query = $db->prepare('SELECT * FROM team WHERE Team_id_fk = ?');
+        $query = $db->prepare('SELECT * FROM team WHERE Team_id = ?');
         $query->execute([$id]);
         $team = $query->fetchAll(PDO::FETCH_OBJ);
         return $team;
     }
     function updateTeam($team,$rings,$city,$id) {
         $db = $this->getDB();
-        $query = $db->prepare('UPDATE team SET Team = ?,Rings = ?,City = ? WHERE Team_id_fk = ?');
+        $query = $db->prepare('UPDATE team SET Team = ?,Rings = ?,City = ? WHERE Team_id = ?');
         $query->execute([$team,$rings,$city,$id]);
     }
 

@@ -43,7 +43,7 @@
           {foreach from=$players item=$player }
             
         
-            <li><a class="dropdown-item" href="Player/{{$player->Player_id}}">{{$player->Player_Name}}</a></li>
+            <li><a class="dropdown-item" href="Player/{{$player->Players_id}}">{{$player->Player_Name}}</a></li>
 
           {/foreach}
           </ul>
@@ -61,7 +61,7 @@
             {foreach from=$teams item=$team }
               
           
-              <li><a class="dropdown-item" href="Team/{{$team->Team_id_fk}}">{{$team->Team}}</a></li>
+              <li><a class="dropdown-item" href="Team/{{$team->Team_id}}">{{$team->Team}}</a></li>
 
             {/foreach}
             </ul>

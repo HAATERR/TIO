@@ -23,7 +23,7 @@
         {foreach from=$teams item=$team }
 
 
-          <option selected disabled value="{{$team->Team_id_fk}}"></option>
+          <option selected disabled value="{{$team->Team_id}}"></option>
           <option>{{$team->Team}}</option>
         {/foreach}
       </select>

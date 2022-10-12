@@ -25,30 +25,29 @@ class PlayerModel{
 }
     function playerId($id){
         $db = $this->getDB();
-        $query = $db->prepare('SELECT * FROM players WHERE Player_id = ?');
+        $query = $db->prepare('SELECT * FROM players WHERE Players_id = ?');
         $query->execute([$id]);
         $player = $query->fetchAll(PDO::FETCH_OBJ);
         return $player;
 }
 
-    function insertPlayer($number, $position, $player_name,$team) {
-    $db = $this->getDB();
-    $query = $db->prepare("INSERT INTO players ( Number, Position, Player_Name,Team) VALUES (?, ?, ?,?)");
-    $query->execute([$number, $position, $player_name,$team]);
-
-    return $db->lastInsertId();
-}
+    function insertPlayer($number,$position,$player_name,$team){
+        $db = $this->getDB();
+        $query = $db->prepare('INSERT INTO players  (Number, Position, Player_Name, Team) VALUES (?, ?, ?, ?)');
+        $query->execute([$number,$position,$player_name,$team]);
+        return $db->lastInsertId();
+    }
 
     function deletePlayerById($id) {
     $db = $this->getDB();
-    $query = $db->prepare("DELETE FROM players WHERE Player_id = ?");
+    $query = $db->prepare("DELETE FROM players WHERE Players_id = ?");
     $query->execute([$id]);
 }
 
 
 function updatePlayer($number,$position,$player_name,$team,$id) {
     $db = $this->getDB();
-    $query = $db->prepare('UPDATE players SET Number = ?,Position = ?,Player_Name = ?,Team = ? WHERE Player_id = ?');
+    $query = $db->prepare('UPDATE players SET Number = ?,Position = ?,Player_Name = ?,Team = ? WHERE Players_id = ?');
     $query->execute([$number,$position,$player_name,$team,$id]);
 }
 
