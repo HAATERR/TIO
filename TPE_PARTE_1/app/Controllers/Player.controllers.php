@@ -88,7 +88,7 @@ class PlayerController{
     }
     function updatePlayer($id){
         $this->checkLoggedIn();
-        if (($_POST['number']) && ($_POST['position']) && ($_POST['player_name']) && ($_POST['team'])){
+        if ( isset($_POST['number']) && isset($_POST['position']) && isset($_POST['player_name']) && isset($_POST['team'])){
             $number = $_POST['number'];
             $position = $_POST['position'];
             $player_name = $_POST['player_name'];
@@ -149,20 +149,22 @@ class PlayerController{
     
     function updateTeam($id){
         $this->checkLoggedIn();
-       
+        if (isset($_POST["team"]) && isset($_POST["rings"]) && isset($_POST["city"])){
             $team = $_POST['team'];
             $rings = $_POST['rings'];
             $city = $_POST['city'];
             $this->ModelTeam->updateTeam($team,$rings,$city,$id);
         
         header("Location: " . BASE_URL); 
-    }
+            }
+        }
+    
     function showUpdateTeam($id){
-        $this->checkLoggedIn();
+        session_start();
         $team =  $this->ModelTeam->teamId($id);
         $teams = $this->ModelTeam->getAllTeams(); 
         $players = $this->ModelPlayers->getAllPlayers();
-        $this->NbaViews->showUpdateTeam($team,$players,$teams,$id);
+        $this->NbaViews->showUpdateTeam($team,$players,$teams);
     }
     function showForm_Admi(){
         $this->checkLoggedIn();
