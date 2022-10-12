@@ -2,13 +2,19 @@
 
                  
         <div class="container text-center">
-        <h2>Jugadores</h2>    
+        
+        
+        
+         
         <div class="row" >
+        <h2 class="mt-5">Jugadores</h2>   
                  <div class="col mt-5 mb-5">
                    {foreach from=$players item=$player}
+                   
+                        
                     
                       
-                            <div class="card text-center ">
+                            <div class="card text-center mt-5 mb-5">
                                 <div class="card-body text-center">
                                     <h5 class='card-title'>Nombre: {{$player->Player_Name}}</h5>
                                     <p class='card-text'>Posicion: {{$player->Position}}</p>
@@ -24,6 +30,7 @@
                                     </div>
                                 </div>
                             </div>
+                                
                             {/foreach} 
                         </div>
                     </div>    
@@ -33,7 +40,7 @@
                                     <div class="col mt-5 mb-5">
                                     {foreach from=$teams item=$team}
                                                 <div class="card text-center mt-5 mb-5" >
-                                                <div class="card-body text-center mt-5 mb-5">
+                                                <div class="card-body text-center">
                                                     <h5 class='card-title'>Equipo: {{$team->Team}}</h5>
                                                     <p class='card-text'>Anillos: {{$team->Rings}}</p>
                                                     <p class='card-text'>Ciudad: {{$team->City}}</p> 

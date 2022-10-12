@@ -24,7 +24,7 @@ class PlayerController{
 
     function showHome() {
         session_start();
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $teams  = $this->ModelTeam->getAllTeams();
         //obtengo la vista
          $this->NbaViews->showHome($players,$teams,"Tiene que eliminar los jugadores primero para eliminar el equipo");
@@ -36,13 +36,13 @@ class PlayerController{
     function showPlayers(){
         session_start();
         $teams =  $this->ModelTeam->getAllTeams();
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $this->NbaViews->showPlayers($players,$teams);
     }
     function showPlayerById($id){
         session_start();
 
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getPlayersByTeam($id);
         $teams = $this->ModelTeam->getAllTeams();
         $player = $this->ModelPlayers->playerId($id);
         $this->NbaViews->showPlayerById($players,$player,$teams);
@@ -52,6 +52,7 @@ class PlayerController{
     function addPlayer() {
         // TODO: validar entrada de datos
         $this->checkLoggedIn();
+        var_dump($_POST);
         $player_name = $_POST['player_name'];
         $number = $_POST['number'];
         $position = $_POST['position'];
@@ -83,7 +84,7 @@ class PlayerController{
         $this->checkLoggedIn();
         $player =  $this->ModelPlayers->playerId($id);
         $teams = $this->ModelTeam->getAllTeams(); 
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $this->NbaViews->showUpdatePlayer($player,$players,$teams,$id);
     }
     function updatePlayer($id){
@@ -102,7 +103,7 @@ class PlayerController{
     
     function showTeamById($id){
         session_start();
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $teams = $this->ModelTeam->getAllTeams();
         $team  = $this->ModelTeam->teamId($id);
         $this->NbaViews->showTeamById($players,$team,$teams);
@@ -114,7 +115,7 @@ class PlayerController{
     function showTeams(){
         session_start();
         $teams =  $this->ModelTeam->getAllTeams();
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $this->NbaViews->showTeams($teams,$players);
     }
 
@@ -163,13 +164,13 @@ class PlayerController{
         session_start();
         $team =  $this->ModelTeam->teamId($id);
         $teams = $this->ModelTeam->getAllTeams(); 
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $this->NbaViews->showUpdateTeam($team,$players,$teams);
     }
     function showForm_Admi(){
         $this->checkLoggedIn();
         $teams = $this->ModelTeam->getAllTeams();
-        $players = $this->ModelPlayers->getAllPlayers();
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $this->NbaViews->showForm_Admi($teams,$players);
     }
 

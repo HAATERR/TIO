@@ -7,15 +7,15 @@
 <form class="row g-3 mt-5 mb-5" action="addPlayer" method="POST">
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">Numero de Camiseta</label>
-    <input type="text" class="form-control is-valid" id="validationServer01" name="player_name" required>
+    <input type="text" class="form-control is-valid" id="validationServer01" name="number" required>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Posicion</label>
-    <input type="text" class="form-control is-valid" id="validationServer02" name="number" required>
+    <input type="text" class="form-control is-valid" id="validationServer02" name="position" required>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Nombre de Jugador</label>
-    <input type="text" class="form-control is-valid" id="validationServer02" name="position" required>
+    <input type="text" class="form-control is-valid" id="validationServer02" name="player_name" required>
 
     <div class="col-md-3">
       <label for="validationCustom04" class="form-label">Equipo</label>
@@ -23,8 +23,8 @@
         {foreach from=$teams item=$team }
 
 
-          <option selected disabled value="{{$team->Team_id}}"></option>
-          <option>{{$team->Team}}</option>
+          <option  value="{{$team->Team_id}}">{{$team->Team}}</option>
+          
         {/foreach}
       </select>
 

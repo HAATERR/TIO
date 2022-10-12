@@ -8,12 +8,19 @@ class PlayerModel{
     }
 
 
-    function getAllPlayers() {
+     function getPlayersByTeam($id){
+        $db = $this->getDB();
+        $query = $db->prepare('SELECT players.*, team.* FROM players JOIN team ON players.Team_id_fk = team.Team_id WHERE players.Team_id_fk = ?');
+        $query->execute([$id]); 
+        $players = $query->fetchAll(PDO::FETCH_OBJ);
+        return $players;
+    }
+    function getAllPlayersandNameTeam() {
         // 1. abro conexión a la DB
         $db = $this->getDB();
     
         // 2. ejecuto la sentencia (2 subpasos)
-        $query = $db->prepare("SELECT * FROM players");
+        $query = $db->prepare("SELECT players.*, team.* FROM players JOIN team ON players.Team_id_fk = team.Team_id");
         $query->execute();
     
         // 3. obtengo los resultados
@@ -32,10 +39,12 @@ class PlayerModel{
 }
 
     function insertPlayer($number,$position,$player_name,$team){
+        var_dump($number,$position,$player_name,$team);
         $db = $this->getDB();
-        $query = $db->prepare('INSERT INTO players  (Number, Position, Player_Name, Team) VALUES (?, ?, ?, ?)');
+        $query = $db->prepare('INSERT INTO players  (Number, Position, Player_Name, Team_id_fk) VALUES (?, ?, ?, ?)');
         $query->execute([$number,$position,$player_name,$team]);
         return $db->lastInsertId();
+        
     }
 
     function deletePlayerById($id) {

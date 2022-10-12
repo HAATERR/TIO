@@ -1,6 +1,8 @@
 {include file="header.tpl"}
         
-        
+       
+            
+       
       
         <div class="col-sm-6 mt-5 mb-5">
        
@@ -20,5 +22,5 @@
                      </div>
                  </div>
            
-
+                
      {include file="footer.tpl"}
