@@ -8,7 +8,8 @@ class PlayerModel{
     }
 
 
-     function getPlayersByTeam($id){
+     function getPlayersById($id){
+        var_dump($id);
         $db = $this->getDB();
         $query = $db->prepare('SELECT players.*, team.* FROM players JOIN team ON players.Team_id_fk = team.Team_id WHERE players.Team_id_fk = ?');
         $query->execute([$id]); 

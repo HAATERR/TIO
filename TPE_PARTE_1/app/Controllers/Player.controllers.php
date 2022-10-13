@@ -41,10 +41,9 @@ class PlayerController{
     }
     function showPlayerById($id){
         session_start();
-
-        $players = $this->ModelPlayers->getPlayersByTeam($id);
+        $players = $this->ModelPlayers->getAllPlayersandNameTeam();
         $teams = $this->ModelTeam->getAllTeams();
-        $player = $this->ModelPlayers->playerId($id);
+        $player = $this->ModelPlayers->getPlayersById($id);
         $this->NbaViews->showPlayerById($players,$player,$teams);
     }
 

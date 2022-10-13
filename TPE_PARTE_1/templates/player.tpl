@@ -2,7 +2,7 @@
         
        
             
-       
+<div class="container text-center">
       
         <div class="col-sm-6 mt-5 mb-5">
        
@@ -21,6 +21,6 @@
                          </div>
                      </div>
                  </div>
-           
+                </div>
                 
      {include file="footer.tpl"}
