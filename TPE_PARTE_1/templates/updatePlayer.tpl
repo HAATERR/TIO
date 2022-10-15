@@ -31,8 +31,8 @@
                         {foreach from=$teams item=$team }
 
 
-                            <option selected disabled value="{{$team->Team_id}}"></option>
-                            <option>{{$team->Team}}</option>
+                            <option selected disabled value="{{$team->Team_id}}">{{$team->Team}}</option>
+                        
                         {/foreach}
                     </select>
 
