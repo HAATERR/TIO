@@ -1,5 +1,6 @@
 <?php
 require_once 'app/Controllers/User.controllers.php';
+require_once 'app/Controllers/Team.controller.php';
 require_once 'app/Controllers/Player.controllers.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -24,7 +25,7 @@ switch ($params[0]) {
         $controller->showPlayers();
         break;
     case 'Teams':
-        $controller = new PlayerController();
+        $controller = new TeamController();
         $controller->showTeams();
         break;
     
@@ -55,27 +56,27 @@ switch ($params[0]) {
         break;
     case 'Team':
         $id = $params[1];
-        $controller = new PlayerController();
+        $controller = new TeamController();
         $controller->showTeamById($id);
         break;
     case 'addTeam';
-    $controller = new PlayerController();
+    $controller = new TeamController();
      $controller->addTeam();
         break; 
     case 'deleteTeam':
         // obtengo el parametro de la acción
         $id = $params[1];
-        $controller = new PlayerController();
+        $controller = new TeamController();
         $controller->deleteTeam($id);
         break;
     case 'showUpdateTeam':
         $id = $params[1];
-        $controller = new PlayerController();
+        $controller = new TeamController();
         $controller->showUpdateTeam($id);
         break; 
     case 'updateTeam':
         $id = $params[1];
-        $controller = new PlayerController();
+        $controller = new TeamController();
         $controller->updateTeam($id);
         break;   
     case 'login';
