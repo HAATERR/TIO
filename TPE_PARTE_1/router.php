@@ -40,10 +40,10 @@ switch ($params[0]) {
         $controller->deletePlayer($id);
         break;
      case 'showUpdatePlayer':
-            $id = $params[1];
-            $controller = new PlayerController();
-            $controller->showUpdatePlayer($id);
-            break;
+        $id = $params[1];
+        $controller = new PlayerController();
+        $controller->showUpdatePlayer($id);
+        break;
     case 'updatePlayer':
         $id = $params[1];
         $controller = new PlayerController();
@@ -54,10 +54,6 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->showPlayerById($id);
         break;
-    case 'showPlayersByCategory';
-        $id = $params[1];  
-        $controller = new PlayerController();
-        $controller->showPlayersByCategory($id);
     case 'Team':
         $id = $params[1];
         $controller = new TeamController();
@@ -92,9 +88,9 @@ switch ($params[0]) {
         $controller->verifyUser();
         break;
     case 'logout':
-            $authController = new UserController();
-            $authController->logout();
-            break;
+        $authController = new UserController();
+        $authController->logout();
+        break;
     case 'form_admi';
         $controller = new PlayerController();
         $controller->showForm_Admi();

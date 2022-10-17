@@ -8,8 +8,10 @@
                                                 <h5 class='card-title'>Equipo: {{$team->Team}}</h5>
                                                 <p class='card-text'>Anillos: {{$team->Rings}}</p>
                                                 <p class='card-text'>Ciudad: {{$team->City}}</p>
-                                                <a href='showPlayersByCategory/{$team->Team_id}' type="button" class="btn btn-primary">Ver Jugadores Del Equipo</a>
-                                                    {{if isset($smarty.session.USER_ID)}}
+                                                {foreach from=$playerid item=$player }
+                                                    <p class='card-text'>Jugador del Equipo: {{$player->Player_Name}}</p>
+                                                {/foreach}
+                                                {if isset($smarty.session.USER_ID)}
                                                         <a href='form_admi' class='btn btn-primary'type='button'>Agregar</a>
                                                         <a href='showUpdateTeam/{$team->Team_id}' class='btn btn-primary'type='button'>Editar</a>
                                                         <a href='deleteTeam/{$team->Team_id}' type="button" class="btn btn-danger">Eliminar</a>

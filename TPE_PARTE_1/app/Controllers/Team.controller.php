@@ -32,9 +32,10 @@ class TeamController{
     function showTeamById($id){
         session_start();
         $players = $this->ModelPlayers->getAllPlayersandNameTeam();
+        $playerid = $this->ModelPlayers->getPlayersById($id);
         $teams = $this->ModelTeam->getAllTeams();
         $team  = $this->ModelTeam->teamId($id);
-        $this->NbaViews->showTeamById($players,$team,$teams);
+        $this->NbaViews->showTeamById($players,$team,$teams,$playerid);
     }
 
 

@@ -72,20 +72,17 @@
             $this->smarty->display('updateTeam.tpl');
         }
         
-        function showTeamById($players,$team,$teams){
+        function showTeamById($players,$team,$teams,$playerid){
             $this->smarty->assign('team',$team[0]);
             $this->smarty->assign('teams',$teams);
             $this->smarty->assign('players',$players);
+            $this->smarty->assign('playerid',$playerid);
             $this->smarty->display('team.tpl');
             
 
      }
 
-        function showPlayersByCategory($players,$teams){
-            $this->smarty->assign('teams',$teams);
-            $this->smarty->assign('players',$players);
-            $this->smarty->display('teamByItem.tpl');
-        }
+        
 
 
     }

@@ -46,12 +46,7 @@ class PlayerController{
         $player = $this->ModelPlayers->getPlayersById($id);
         $this->NbaViews->showPlayerById($players,$player,$teams);
     }
-    function showPlayersByCategory($id){
-        session_start();
-        $players = $this->ModelPlayers->getPlayersById($id);
-        $teams = $this->ModelTeam->teamId($id);
-        $this->NbaViews->showPlayersByCategory($players,$teams);
-    }
+    
 
     function addPlayer() {
         // TODO: validar entrada de datos
