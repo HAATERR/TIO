@@ -54,6 +54,10 @@ switch ($params[0]) {
         $controller = new PlayerController();
         $controller->showPlayerById($id);
         break;
+    case 'showPlayersByCategory';
+        $id = $params[1];  
+        $controller = new PlayerController();
+        $controller->showPlayersByCategory($id);
     case 'Team':
         $id = $params[1];
         $controller = new TeamController();

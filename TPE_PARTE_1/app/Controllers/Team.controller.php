@@ -98,7 +98,12 @@ class TeamController{
             $players = $this->ModelPlayers->getAllPlayersandNameTeam();
             $this->NbaViews->showForm_Admi($teams,$players);
         }
-    
+        
+
+
+
+        
+        
         function checkLoggedIn() {
             session_start();
             if (!isset($_SESSION['IS_LOGGED'])) {

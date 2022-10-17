@@ -81,7 +81,11 @@
 
      }
 
-
+        function showPlayersByCategory($players,$teams){
+            $this->smarty->assign('teams',$teams);
+            $this->smarty->assign('players',$players);
+            $this->smarty->display('teamByItem.tpl');
+        }
 
 
     }

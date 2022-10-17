@@ -9,7 +9,6 @@ class PlayerModel{
 
 
      function getPlayersById($id){
-        var_dump($id);
         $db = $this->getDB();
         $query = $db->prepare('SELECT players.*, team.* FROM players JOIN team ON players.Team_id_fk = team.Team_id WHERE players.Team_id_fk = ?');
         $query->execute([$id]); 
@@ -28,9 +27,19 @@ class PlayerModel{
         $players = $query->fetchAll(PDO::FETCH_OBJ); // devuelve un arreglo de objetos
         
         return $players;
-
-
+    
+    
+        
 }
+
+    function getPlayersByTeam($id){
+       $db = $this->getDB();
+        $query = $db->prepare("SELECT * FROM players WHERE Team_id_fk = ?");
+        $query->execute([$id]); 
+        $players = $query->fetchAll(PDO::FETCH_OBJ);
+        return $players;
+    }
+
     function playerId($id){
         $db = $this->getDB();
         $query = $db->prepare('SELECT * FROM players WHERE Players_id = ?');

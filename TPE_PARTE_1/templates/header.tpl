@@ -40,8 +40,10 @@
             Jugador
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-          {foreach from=$players item=$player }
+          
             
+        {foreach from=$players item=$player }
+          
         
             <li><a class="dropdown-item" href="Player/{{$player->Players_id}}">{{$player->Player_Name}}</a></li>
 
